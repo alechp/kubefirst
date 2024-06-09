@@ -64,7 +64,12 @@ func createDigitalocean(cmd *cobra.Command, args []string) error {
 	// Validate git
 	executionControl := viper.GetBool(fmt.Sprintf("kubefirst-checks.%s-credentials", cliFlags.GitProvider))
 	if !executionControl {
-		newRepositoryNames := []string{"gitops", "metaphor"}
+
+		// gitopsTemplateBranchFlag   string
+		// gitopsRepositoryNameFlag   string
+
+		// newRepositoryNames := []string{"gitops", "metaphor"}
+		newRepositoryNames := []string{cliFlags.GitopsRepositoryName, cliFlags.MetaphorRepositoryName}
 		newTeamNames := []string{"admins", "developers"}
 
 		initGitParameters := gitShim.GitInitParameters{
